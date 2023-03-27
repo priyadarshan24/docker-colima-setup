@@ -7,7 +7,21 @@ brew install colima
 
 //Start Colima with defaults
 colima start
+
+//If you are using TestContainers to spawn docker container to run database Integration tests. Perform the following additional steps:
+//As of Colima v0.4.0 it's recommended to set the active Docker context to use Colima. After the context is set Testcontainers for Go will automatically be //configured to use Colima.
+docker context use colima
+
+//Post that check if docker context has been changed to point to Colima
+docker context ls
+
 ```
+You should see the following (as shown in image below) when you hit the "docker context ls" with asterik remark indicating that the default docker context is Colima
+
+<img width="729" alt="image" src="https://user-images.githubusercontent.com/100334324/228026026-b000be6a-4868-453f-bb03-8622023e45e4.png">
+
+Check following article for more details on how to set Colima has default docker context - https://golang.testcontainers.org/system_requirements/using_colima/
+
 For More advanced settings refer the shared GitHub Repository of Colima ((https://github.com/abiosoft/colima)
 
 # Steps to ensure Volume Mounting works fine with Colima
